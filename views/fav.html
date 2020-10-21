@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VTC 304CEM 197370593</title>
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" >
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/resources/css/main.css" />
+  <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.css">			
+  		<script src="/resources/jquery/jquery-1.11.1.min.js"></script>
+			<script src="/resources/js/jquery.form.js"></script>
+		<script src="/resources/vue/vue.js"></script>
+		<script src="/resources/bootstrap/js/bootstrap.js"></script>
+  <script src="/resources/js/uikit.js"></script>
+</head>
+
+<body>
+<div id="main"> 
+<nav class="uk-navbar-container uk-letter-spacing-small" >
+  <div class="uk-container">
+    <div class="uk-position-z-index" data-uk-navbar>
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="index.html">VTC Recipe</a>
+        <ul class="uk-navbar-nav uk-visible@m uk-margin-large-left">
+          <li ><a href="/index">Home</a></li>
+          <li ><a href="/index#recipes">Recipe</a></li>
+          <li ><a href="#">Search</a></li>
+          <li ><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="uk-navbar-right">
+        <div>
+          <a class="uk-navbar-toggle" data-uk-search-icon href="#"></a>
+          <div class="uk-drop uk-background-default" data-uk-drop="mode: click; pos: left-center; offset: 0">
+            <form class="uk-search uk-search-navbar uk-width-1-1">
+              <input class="uk-search-input uk-text-demi-bold" type="search" placeholder="Search..." autofocus>
+            </form>
+          </div>
+        </div>
+        <ul class="uk-navbar-nav uk-visible@m">
+           
+          <li ><a v-show="!show" @click="login()">Sign In</a></li>    
+          <li ><a v-show="show" class="btn btn-link" @click="updatePassword()">Password Change</a></li>
+        </ul>
+        <div class="uk-navbar-item">
+                   <div>
+          <button class="uk-button uk-button-primary  uk-width-auto uk-border-pill " @click="register()" v-show="!show">Sign Up</button></div>
+          <div>
+          <button class="uk-button uk-button-primary  uk-width-auto uk-border-pill " @click="logout()" v-show="show">Logout</button>
+          </div>
+        </div>          
+        <a class="uk-navbar-toggle uk-hidden@m" href="#offcanvas" data-uk-toggle><span
+          data-uk-navbar-toggle-icon></span></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="uk-section uk-section-default uk-padding-remove-top">
+  <div class="uk-container">
+    <div data-uk-grid>
+      <div class="uk-width-1-2@m">
+        <form class="uk-search uk-search-default uk-width-1-1 uk-margin-small-bottom">
+          <span data-uk-search-icon></span>
+          <input class="uk-search-input uk-text-small uk-border-rounded uk-form-large" type="search" placeholder="Search for recipes...">
+        </form>          
+      </div>
+      <div class="uk-width-1-2@m uk-text-right@m">
+        <select class="uk-select uk-select-light uk-width-auto uk-border-pill uk-select-muted">
+          <option>Sort by: Latest</option>
+          <option>Sort by: Top Rated</option>
+          <option>Sort by: Trending</option>
+        </select>
+      </div>
+    </div>      
+
+    <div class="uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m uk-margin-medium-top" data-uk-grid>
+    <div class="show-info" v-for="item in recipes">
+      <div>
+        <div
+          class="uk-card" @click="showDetail(item)">
+          <div class="uk-card-media-top uk-inline uk-light">
+           <img class="uk-border-rounded-medium" :src="item.imgSrc" alt="Course Title">
+            <div class="uk-position-cover uk-card-overlay uk-border-rounded-medium"></div>
+  
+          </div>
+          <div>
+            <h3 class="uk-card-title uk-text-500 uk-margin-small-bottom uk-margin-top"><div>{{item.name}}</div></h3>
+            <div class="uk-text-xsmall uk-text-muted" data-uk-grid>
+
+              
+            </div>
+          </div>
+       
+        </div>
+      </div>
+      </div>
+      
+    </div>
+    <div class="uk-margin-large-top uk-text-small">
+      <ul class="uk-pagination uk-flex-center uk-text-500 uk-margin-remove" data-uk-margin>
+        <li><a href="#"><span data-uk-pagination-previous></span></a></li>
+        <li><a href="#">1</a></li>
+        <li class="uk-disabled"><span>...</span></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">6</a></li>
+        <li class="uk-active"><span>7</span></li>
+        <li><a href="#">8</a></li>
+        <li><a href="#"><span data-uk-pagination-next></span></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<footer class="uk-section uk-section-default">
+	<div class="uk-container uk-text-secondary uk-text-500">
+		<div class="uk-child-width-1-2@s" data-uk-grid>
+			<div>
+				<a href="#" class="uk-logo">VTC Recipe</a>
+			</div>
+			<div class="uk-flex uk-flex-middle uk-flex-right@s">
+				<div data-uk-grid class="uk-child-width-auto uk-grid-small">
+					<div>
+						<a href="https://www.facebook.com/" data-uk-icon="icon: facebook; ratio: 0.8" class="uk-icon-button facebook" target="_blank"></a>
+					</div>
+					<div>
+						<a href="https://www.instagram.com/" data-uk-icon="icon: instagram; ratio: 0.8" class="uk-icon-button instagram" target="_blank"></a>
+					</div>
+					<div>
+						<a href="mailto:info@blacompany.com" data-uk-icon="icon: twitter; ratio: 0.8" class="uk-icon-button twitter" target="_blank"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="uk-child-width-1-2@s uk-child-width-1-4@m" data-uk-grid>
+			<div>
+				<ul class="uk-list uk-text-small">
+					<li><a class="uk-link-text" href="#">Presentations</a></li>
+					<li><a class="uk-link-text" href="#">Professionals</a></li>
+					<li><a class="uk-link-text" href="#">Stores</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="uk-list uk-text-small">
+					<li><a class="uk-link-text" href="#">Webinars</a></li>
+					<li><a class="uk-link-text" href="#">Workshops</a></li>
+					<li><a class="uk-link-text" href="#">Local Meetups</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="uk-list uk-text-small">
+					<li><a class="uk-link-text" href="#">Our Initiatives</a></li>
+					<li><a class="uk-link-text" href="#">Giving Back</a></li>
+					<li><a class="uk-link-text" href="#">Communities</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="uk-list uk-text-small">
+					<li><a class="uk-link-text" href="#">Contact Form</a></li>
+					<li><a class="uk-link-text" href="#">Work With Us</a></li>
+					<li><a class="uk-link-text" href="#">Visit Us</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="uk-margin-medium-top uk-text-small uk-text-muted">				
+			<div>Made by Lam Wing Lung (PT11-197370593)</div>
+		</div>
+	</div>
+</footer>
+          <div class="modal fade" id="newPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog .modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel">Enter Your New Password</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label for="exampleFormControlInput1">New Password:</label>
+										<input type="text" class="form-control" v-model="newPassword" placeholder="newPassword">
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlInput1">Repeat Password:</label>
+										<input type="text" class="form-control" v-model="newRepeatPassword" placeholder="RepeatPassword">
+									</div>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-primary" @click="newPasswordAction">Change Password</button>
+								</form>
+
+							</div>
+							<div class="modal-footer">
+
+							</div>
+						</div><!-- /.modal-content -->
+					</div><!-- /.modal-dialog -->
+				</div>
+<div id="offcanvas" data-uk-offcanvas="flip: true; overlay: true">
+  <div class="uk-offcanvas-bar">
+    <a class="uk-logo" href="index.html">Kocina</a>
+    <button class="uk-offcanvas-close" type="button" data-uk-close="ratio: 1.2"></button>
+    <ul class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-medium-top uk-text-center">
+      <li ><a href="index#recipes">Recipe</a></li>
+      <li ><a href="#">Search</a></li>
+      <li ><a href="#">Contact</a></li>
+      <li ><a href="/login">Sign In</a></li>
+      <li ><a href="/register">Sign Up</a></li>
+    </ul>
+    <div class="uk-margin-medium-top">
+      <a class="uk-button uk-width-1-1 uk-button-primary" href="sign-up.html">Sign Up</a>
+    </div>
+    <div class="uk-margin-medium-top uk-text-center">
+      <div data-uk-grid class="uk-child-width-auto uk-grid-small uk-flex-center">
+        <div>
+          <a href="https://twitter.com/" data-uk-icon="icon: twitter" class="uk-icon-link" target="_blank"></a>
+        </div>
+        <div>
+          <a href="https://www.facebook.com/" data-uk-icon="icon: facebook" class="uk-icon-link" target="_blank"></a>
+        </div>
+        <div>
+          <a href="https://www.instagram.com/" data-uk-icon="icon: instagram" class="uk-icon-link" target="_blank"></a>
+        </div>
+        <div>
+          <a href="https://vimeo.com/" data-uk-icon="icon: vimeo" class="uk-icon-link" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+<script src="/resources/js/fav.js"></script>
+</html>

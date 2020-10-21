@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-gb" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VTC 304CEM 197370593</title>
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png" >
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Leckerli+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/resources/css/main.css" />
+
+		<script src="/resources/jquery/jquery-1.11.1.min.js"></script>
+		<script src="/resources/vue/vue.js"></script>
+		<script src="/resources/bootstrap/js/bootstrap.js"></script>
+  <script src="/resources/js/uikit.js"></script>
+</head>
+
+<body>
+
+<div class="uk-grid-collapse main" data-uk-grid id="main">
+  <div class="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center" data-uk-height-viewport>
+    <div class="uk-width-3-4@s">
+      <div class="uk-text-center uk-margin-bottom">
+        <a class="uk-logo uk-text-primary uk-text-bold" href="index.html">VTC Recipes</a>
+      </div>
+      <div class="uk-text-center uk-margin-medium-bottom">
+        <h1 class="uk-h2 uk-letter-spacing-small">Create an Account</h1>
+      </div>
+     
+
+        <div class="uk-width-1-1 uk-margin">
+          <label class="uk-form-label" for="username">User Name</label>
+          <input id="email" class="uk-input uk-form-large uk-border-pill uk-text-center form-control" v-model="username" type="text" aria-describedby="addon-wrapping" placeholder="Alex sir">
+        </div>
+        <div class="uk-width-1-1 uk-margin">
+          <label class="uk-form-label" for="password">Password</label>
+          <input id="password" class="uk-input uk-form-large uk-border-pill uk-text-center form-control"  v-model="password" aria-describedby="addon-wrapping" type="password" placeholder="Password">
+        </div>
+          <div class="uk-width-1-1 uk-margin">
+          <label class="uk-form-label" for="phone">Phone No</label>
+          <input id="name" class="uk-input uk-form-large uk-border-pill uk-text-center form-control" v-model="phone" aria-describedby="addon-wrapping" type="text" placeholder="12345678">
+        </div>
+        <div class="uk-width-1-1 uk-text-center">
+          <button class="uk-button uk-button-primary uk-button-large" @click="register">Sign Up</button>
+        </div>
+        <div class="uk-width-1-1 uk-margin uk-text-center">
+          <p class="uk-text-small uk-margin-remove">By signing up you agree to our <a class="uk-link-border" href="#">terms</a> of service.</p>
+        </div>
+     
+    </div>
+  </div>
+  <div class="uk-width-1-2@m uk-padding-large uk-flex uk-flex-middle uk-flex-center uk-light" data-uk-height-viewport>
+    <div class="uk-background-cover uk-background-norepeat uk-background-blend-overlay uk-background-overlay 
+      uk-border-rounded-large uk-width-1-1 uk-height-xlarge uk-flex uk-flex-middle uk-flex-center" 
+      style="background-image: url(/resources/img/register.jpg);">
+      <div class="uk-padding-large">
+        <div class="uk-text-center">
+          <h2 class="uk-letter-spacing-small">Welcome Back</h2>
+        </div>
+        <div class="uk-margin-top uk-margin-medium-bottom uk-text-center">
+          <p>Already signed up, enter your details and start cooking your first meal today</p>
+        </div>
+        <div class="uk-width-1-1 uk-text-center">
+          <a href="/login" class="uk-button uk-button-primary uk-button-large" >Sign In</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/resources/js/register.js"></script>
+</body>
+
+</html>
+
